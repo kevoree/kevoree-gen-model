@@ -1,3 +1,5 @@
+'use strict';
+
 var JavascriptNode = require('kevoree-node-javascript');
 
 var FakeSubNode = JavascriptNode.extend({

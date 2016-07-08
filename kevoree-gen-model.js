@@ -1,3 +1,5 @@
+'use strict';
+
 var path        = require('path'),
     fs          = require('fs'),
     chalk       = require('chalk'),
@@ -112,7 +114,7 @@ module.exports = function (dirPath, quiet, callback) {
                 errHandler(err);
             } else {
                 if (!quiet) {
-                    console.log("\nModel 'kevlib.json' saved at %s", path.relative(process.cwd(), filepath));
+                    console.log('\nModel saved at %s', path.relative(process.cwd(), filepath));
                 }
                 callback();
             }
@@ -141,7 +143,7 @@ module.exports = function (dirPath, quiet, callback) {
                     errHandler(err);
                 }
             } else {
-                errHandler(new Error("You should give the path to a folder in argument."));
+                errHandler(new Error('You should give the path to a folder in argument'));
             }
         }
     });

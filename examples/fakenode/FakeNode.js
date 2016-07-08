@@ -1,3 +1,5 @@
+'use strict';
+
 var AbstractNode = require('kevoree-entities').AbstractNode;
 
 var FakeNode = AbstractNode.extend({
@@ -9,11 +11,11 @@ var FakeNode = AbstractNode.extend({
     dic_boolAttr:   { optional: false, defaultValue: true },
 
     start: function () {
-        console.log("fake comp start");
+        console.log('fake comp start');
     },
 
     stop: function () {
-        console.log("fake comp stop");
+        console.log('fake comp stop');
     }
 });
 

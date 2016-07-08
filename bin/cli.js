@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 var optimist = require('optimist')
         .usage('Usage: $0 [-p path/to/your/project] [-q] [-h] [-v]')
         .options('p', {
@@ -12,8 +13,8 @@ var optimist = require('optimist')
         .options('h', {
             default: false,
             describe: 'Display this help'
-        });
-    kevoreeGen = require('./kevoree-gen-model');
+        }),
+    kevoreeGen = require('../kevoree-gen-model');
 
 if (optimist.argv.h) {
     optimist.showHelp();

@@ -1,3 +1,5 @@
+'use strict';
+
 var AbstractComponent = require('kevoree-entities').AbstractComponent,
     DataType = require('kevoree-library').org.kevoree.DataType;
 
@@ -11,7 +13,7 @@ var FakeComp = AbstractComponent.extend({
     dic_emptyAttr4: { datatype: null },
     dic_port:       { defaultValue: 9000, fragmentDependant: true, datatype: DataType.object.DOUBLE },
     dic_port1:      { defaultValue: 52.2, datatype: DataType.object.FLOAT },
-    dic_port2:      { defaultValue: "42", datatype: DataType.object.LONG },
+    dic_port2:      { defaultValue: '42', datatype: DataType.object.LONG },
     dic_port3:      { defaultValue: 1000},
     dic_boolAttr:   { optional: false, defaultValue: true },
     dic_image:          { },
@@ -29,18 +31,18 @@ var FakeComp = AbstractComponent.extend({
     dic_memory:         { optional: false, defaultValue: 512, datatype: 'number' },
 
     start: function () {
-        console.log("fake comp start");
+        console.log('fake comp start');
     },
 
     stop: function () {
-        console.log("fake comp stop");
+        console.log('fake comp stop');
     },
 
     out_potato: null,
 
-    in_fake: function (msg) {},
+    in_fake: function (msg) {}, // jshint ignore:line
 
-    in_receiver: function (msg) {}
+    in_receiver: function (msg) {} // jshint ignore:line
 });
 
 module.exports = FakeComp;
