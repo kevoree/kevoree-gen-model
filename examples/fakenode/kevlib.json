@@ -1,6 +1,6 @@
 {
-    "class": "org.kevoree.ContainerRoot@0.0272034129593521361410431228384",
-    "generated_KMF_ID": "0.0272034129593521361410431228384",
+    "class": "root:org.kevoree.ContainerRoot@0.364065494621172551469026541534",
+    "generated_KMF_ID": "0.364065494621172551469026541534",
     "nodes": [],
     "repositories": [],
     "hubs": [],
@@ -25,16 +25,18 @@
                                     "packages": [],
                                     "typeDefinitions": [
                                         {
-                                            "class": "org.kevoree.NodeType@name=FakeNode,version=1.0.0",
+                                            "class": "org.kevoree.NodeType@name=FakeNode,version=1",
                                             "abstract": "false",
                                             "name": "FakeNode",
-                                            "version": "1.0.0",
-                                            "deployUnits": [],
+                                            "version": "1",
+                                            "deployUnits": [
+                                                "/packages[org]/packages[kevoree]/packages[library]/packages[js]/deployUnits[hashcode=rpTXI244xUxOMPXcaNKgz6bs,name=fakenode,version=1.0.0]"
+                                            ],
                                             "superTypes": [],
                                             "dictionaryType": [
                                                 {
-                                                    "class": "org.kevoree.DictionaryType@0.051687677856534721410431228399",
-                                                    "generated_KMF_ID": "0.051687677856534721410431228399",
+                                                    "class": "org.kevoree.DictionaryType@0",
+                                                    "generated_KMF_ID": "0",
                                                     "attributes": [
                                                         {
                                                             "class": "org.kevoree.DictionaryAttribute@boolAttr",
@@ -42,7 +44,7 @@
                                                             "optional": "false",
                                                             "name": "boolAttr",
                                                             "state": "false",
-                                                            "datatype": "boolean",
+                                                            "datatype": "BOOLEAN",
                                                             "defaultValue": "true",
                                                             "genericTypes": []
                                                         },
@@ -52,7 +54,7 @@
                                                             "optional": "true",
                                                             "name": "port",
                                                             "state": "false",
-                                                            "datatype": "number",
+                                                            "datatype": "INT",
                                                             "defaultValue": "9000",
                                                             "genericTypes": []
                                                         },
@@ -62,7 +64,7 @@
                                                             "optional": "true",
                                                             "name": "emptyAttr",
                                                             "state": "false",
-                                                            "datatype": "string",
+                                                            "datatype": "STRING",
                                                             "defaultValue": "",
                                                             "genericTypes": []
                                                         },
@@ -72,7 +74,7 @@
                                                             "optional": "true",
                                                             "name": "fooAttr",
                                                             "state": "false",
-                                                            "datatype": "string",
+                                                            "datatype": "STRING",
                                                             "defaultValue": "foo",
                                                             "genericTypes": []
                                                         }
@@ -84,13 +86,19 @@
                                     ],
                                     "deployUnits": [
                                         {
-                                            "class": "org.kevoree.DeployUnit@hashcode=,name=fakenode,version=1.0.0",
+                                            "class": "org.kevoree.DeployUnit@hashcode=rpTXI244xUxOMPXcaNKgz6bs,name=fakenode,version=1.0.0",
                                             "name": "fakenode",
-                                            "hashcode": "",
+                                            "hashcode": "rpTXI244xUxOMPXcaNKgz6bs",
                                             "url": "",
                                             "version": "1.0.0",
                                             "requiredLibs": [],
-                                            "filters": []
+                                            "filters": [
+                                                {
+                                                    "class": "org.kevoree.Value@platform",
+                                                    "name": "platform",
+                                                    "value": "js"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }

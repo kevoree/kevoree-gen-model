@@ -4,6 +4,7 @@ var AbstractNode = require('kevoree-entities').AbstractNode;
 
 var FakeNode = AbstractNode.extend({
     toString: 'FakeNode',
+    tdef_version: 1,
 
     dic_fooAttr:    { fragmentDependant: false, defaultValue: 'foo' },
     dic_emptyAttr:  { },
