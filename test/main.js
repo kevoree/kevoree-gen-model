@@ -6,7 +6,7 @@ var path = require('path');
 var modelGen = require('../kevoree-gen-model');
 
 describe('kevoree-gen-model tests', function () {
-    this.timeout(500);
+    this.timeout(2000);
 
     it('generate examples/fakecomp model', function (done) {
         var modulePath = path.resolve(__dirname, '..', 'examples', 'fakecomp');

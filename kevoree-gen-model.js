@@ -3,6 +3,7 @@
 var path = require('path'),
   fs = require('fs'),
   chalk = require('chalk'),
+  Table = require('cli-table'),
   generator = require('./lib/generator'),
   kevoree = require('kevoree-library').org.kevoree;
 
@@ -48,58 +49,73 @@ module.exports = function (dirPath, quiet, callback) {
    * @param deployUnit
    */
   function genLogsAndFile(model, pkg, tdef, deployUnit) {
-    process.stdout.write('Package:             ' + pkg + '\n');
-    process.stdout.write('TypeDefinition:      ' + tdef.name + '\n');
-    process.stdout.write('TypeDefinition Vers: ' + tdef.version + '\n');
-    process.stdout.write('DeployUnit:          ' + deployUnit.name + '\n');
-    process.stdout.write('DeployUnit Version:  ' + deployUnit.version + '\n');
+    var descMeta = tdef.findMetaDataByID('description');
+    var desc = chalk.gray.italic('-none-');
+    if (descMeta) {
+      if (descMeta.value.length > 50) {
+        desc = descMeta.value.substr(0, 50) + '...';
+      } else {
+        desc = descMeta.value;
+      }
+    }
+
+    console.log(chalk.yellow('TypeDefinition'));
+    console.log('     ' + chalk.gray('package  ') + pkg);
+    console.log('     ' + chalk.gray('name     ') + tdef.name);
+    console.log('     ' + chalk.gray('version  ') + tdef.version);
+    console.log('     ' + chalk.gray('desc     ') + desc);
+    console.log();
+
     if (tdef.dictionaryType) {
       // dictionary logging
-      var dic = [];
-      var attrs = tdef.dictionaryType.attributes.iterator();
-      while (attrs.hasNext()) {
-        var attr = attrs.next();
-        var value = attr.name + ':' + attr.datatype;
-        if (typeof (attr.defaultValue) === 'string' && attr.defaultValue.length > 0) {
-          value += ' ("' + attr.defaultValue + '")';
-        } else {
-          value += ' (' + attr.defaultValue + ')';
-        }
-        if (!attr.optional) {
-          value = chalk.underline(value);
-        }
-        if (attr.fragmentDependant) {
-          value = chalk.inverse(value);
-        }
-        dic.push(value);
+      var dicTable = new Table({
+        head: [chalk.yellow('Dictionary'), chalk.cyan('Datatype'), chalk.cyan('Default value'), chalk.cyan('Optional?'), chalk.cyan('Fragmented?')]
+      });
+      tdef.dictionaryType.attributes.array.forEach(function (attr) {
+        dicTable.push([
+          attr.name,
+          attr.datatype,
+          attr.defaultValue ? attr.defaultValue : chalk.gray.italic('-none-'),
+          attr.optional ? chalk.green('✔'):chalk.yellow('✘'),
+          attr.fragmentDependant ? chalk.green('✔'):chalk.yellow('✘')
+        ]);
+      });
+      if (dicTable.length > 0) {
+        console.log(dicTable.toString());
       }
-      if (dic.length > 0) {
-        process.stdout.write('Dictionary:          [ ' + dic.join(', ') + ' ]\n');
-      }
-
     }
+
     if (tdef.provided) {
-      // provided port logging
-      var provided = [];
-      var providedIt = tdef.provided.iterator();
-      while (providedIt.hasNext()) {
-        provided.push(providedIt.next().name);
-      }
-      if (provided.length > 0) {
-        process.stdout.write('Input port(s):       [ ' + provided.join(', ') + ' ]\n');
+      // inputs port logging
+      var inputs = tdef.provided.array.map(function (port) {
+        return chalk.white(port.name);
+      });
+      if (inputs.length > 0) {
+        var inputsTable = new Table({
+          head: [chalk.yellow('Inputs')].concat(inputs)
+        });
+        console.log(inputsTable.toString());
       }
     }
     if (tdef.required) {
-      // required port logging
-      var required = [];
-      var requiredIt = tdef.required.iterator();
-      while (requiredIt.hasNext()) {
-        required.push(requiredIt.next().name);
-      }
-      if (required.length > 0) {
-        process.stdout.write('Output port(s):      [ ' + required.join(', ') + ' ]\n');
+      // outputs port logging
+      var outputs = tdef.required.array.map(function (port) {
+        return chalk.white(port.name);
+      });
+      if (outputs.length > 0) {
+        var outputsTable = new Table({
+          head: [chalk.yellow('Outputs')].concat(outputs)
+        });
+        console.log(outputsTable.toString());
       }
     }
+
+    console.log();
+    console.log(chalk.yellow('DeployUnit'));
+    console.log('     ' + chalk.gray('hashcode ') + deployUnit.hashcode);
+    console.log('     ' + chalk.gray('name     ') + deployUnit.name);
+    console.log('     ' + chalk.gray('version  ') + deployUnit.version);
+    console.log('     ' + chalk.gray('platform ') + deployUnit.findFiltersByID('platform').value);
 
     if (!quiet) {
       process.stdout.write((!quiet ? '\n' : '') + chalk.green('Model generation done'));
