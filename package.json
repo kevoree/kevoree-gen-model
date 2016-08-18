@@ -10,7 +10,7 @@
     "async": "^2.0.0",
     "chalk": "^1.1.3",
     "cli-table": "^0.3.1",
-    "kevoree-entities": "next",
+    "kevoree-entities": "^9.0.0-alpha.1",
     "kevoree-kotlin": "^1.0.2",
     "kevoree-library": "next",
     "optimist": ">=0.6.1",
