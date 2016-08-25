@@ -5,7 +5,7 @@ var path = require('path'),
   chalk = require('chalk'),
   Table = require('cli-table'),
   generator = require('./lib/generator'),
-  kevoree = require('kevoree-library').org.kevoree;
+  kevoree = require('kevoree-library');
 
 module.exports = function (dirPath, quiet, callback) {
   if (typeof (quiet) === 'function') {
