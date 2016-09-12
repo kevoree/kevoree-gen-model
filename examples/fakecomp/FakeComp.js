@@ -45,7 +45,4 @@ var FakeComp = AbstractComponent.extend({
     in_receiver: function (msg) {} // jshint ignore:line
 });
 
-FakeComp.tdef_version = 42;
-FakeComp.dic_staticAttr = {};
-
 module.exports = FakeComp;
