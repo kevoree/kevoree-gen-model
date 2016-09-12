@@ -5,7 +5,6 @@ var AbstractComponent = require('kevoree-entities').AbstractComponent,
 
 var FakeComp = AbstractComponent.extend({
     toString: 'FakeComp',
-    tdef_version: 1,
 
     dic_fooAttr:    { fragmentDependant: false, defaultValue: 'foo', datatype: 'boolean' },
     dic_emptyAttr:  { datatype: Number },
@@ -45,5 +44,8 @@ var FakeComp = AbstractComponent.extend({
 
     in_receiver: function (msg) {} // jshint ignore:line
 });
+
+FakeComp.tdef_version = 42;
+FakeComp.dic_staticAttr = {};
 
 module.exports = FakeComp;
