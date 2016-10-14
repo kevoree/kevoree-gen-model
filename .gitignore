@@ -31,3 +31,5 @@ npm-debug.log
 .idea
 
 examples/*/kevlib.json
+
+yarn.lock
