@@ -60,10 +60,10 @@ module.exports = function (dirPath, quiet, callback) {
     }
 
     console.log(chalk.yellow('TypeDefinition'));
-    console.log('     ' + chalk.gray('package  ') + pkg);
-    console.log('     ' + chalk.gray('name     ') + tdef.name);
-    console.log('     ' + chalk.gray('version  ') + tdef.version);
-    console.log('     ' + chalk.gray('desc     ') + desc);
+    console.log('     ' + chalk.gray('namespace ') + pkg);
+    console.log('     ' + chalk.gray('name      ') + tdef.name);
+    console.log('     ' + chalk.gray('version   ') + tdef.version);
+    console.log('     ' + chalk.gray('desc      ') + desc);
     console.log();
 
     if (tdef.dictionaryType) {
@@ -112,10 +112,10 @@ module.exports = function (dirPath, quiet, callback) {
 
     console.log();
     console.log(chalk.yellow('DeployUnit'));
-    console.log('     ' + chalk.gray('hashcode ') + deployUnit.hashcode);
-    console.log('     ' + chalk.gray('name     ') + deployUnit.name);
-    console.log('     ' + chalk.gray('version  ') + deployUnit.version);
-    console.log('     ' + chalk.gray('platform ') + deployUnit.findFiltersByID('platform').value);
+    console.log('     ' + chalk.gray('hashcode  ') + deployUnit.hashcode);
+    console.log('     ' + chalk.gray('name      ') + deployUnit.name);
+    console.log('     ' + chalk.gray('version   ') + deployUnit.version);
+    console.log('     ' + chalk.gray('platform  ') + deployUnit.findFiltersByID('platform').value);
 
     if (!quiet) {
       process.stdout.write((!quiet ? '\n' : '') + chalk.green('Model generation done'));
