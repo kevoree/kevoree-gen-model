@@ -30,6 +30,6 @@ npm-debug.log
 
 .idea
 
-examples/*/kevlib.json
+test/**/kevlib.json
 
 yarn.lock

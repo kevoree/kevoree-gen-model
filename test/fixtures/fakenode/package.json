@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./FakeNode.js",
   "kevoree": {
-    "namespace": "org.kevoree.library.js"
+    "namespace": "kevoree"
   },
   "private": true,
   "dependencies": {

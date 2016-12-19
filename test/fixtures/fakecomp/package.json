@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./FakeComp.js",
   "kevoree": {
-    "namespace": "tldpkg"
+    "namespace": "myNamespace"
   },
   "private": true,
   "dependencies": {
